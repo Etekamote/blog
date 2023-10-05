@@ -1,10 +1,14 @@
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Header from "./components/Header";
 
 
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
-    <Route index path="/" element={<Root />}></Route>
+    <Route path="/" element={<Root />}>
+      <Route index path="/" element={<Home />} />
+    </Route>
   ))
   return (
 <RouterProvider router={router}></RouterProvider>
@@ -15,6 +19,7 @@ function App() {
 const Root = () => {
   return (
     <>
+    <Header />
     <Outlet />
     </>
   )
