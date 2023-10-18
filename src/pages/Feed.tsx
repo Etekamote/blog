@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch'
+import Post from '../components/Post'
 
 
 
@@ -17,8 +18,13 @@ if(isLoading){
 </div>
 }
 
+
+
   return (<>
- 
+  {
+  //  data && data.map((item:any) => <Post />)
+  data && data.map((item:any) => console.log(item))
+  }
   </>
   )
 }
