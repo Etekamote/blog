@@ -7,6 +7,7 @@ import FeedPost from '../components/FeedPost'
 
 const Feed = () => {
 const {data, isLoading, error} = useFetch("posts")
+const trimmedData = data.slice(3)
 
 if(isLoading){
   return  <div role="status" className="flex justify-center mt-9">
@@ -22,7 +23,7 @@ if(isLoading){
 
   return (<section className='flex flex-col gap-4'>
   {
-  data && data.map((item:any) => <FeedPost
+  data && trimmedData.map((item:any) => <FeedPost
   key={item.id}
   id={item.id}
   title={item.attributes.title}
