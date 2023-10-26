@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch'
-import Post from '../components/Post'
+import FeedPost from '../components/FeedPost'
 
 
 
@@ -20,12 +20,19 @@ if(isLoading){
 
 
 
-  return (<>
+  return (<section className='flex flex-col gap-4'>
   {
-  //  data && data.map((item:any) => <Post />)
-  data && data.map((item:any) => console.log(item))
+  data && data.map((item:any) => <FeedPost
+  key={item.id}
+  id={item.id}
+  title={item.attributes.title}
+  content={item.attributes.content}
+  tags={item.attributes.tags}
+  date={item.attributes.publishedAt}
+  img={item.attributes.img.data?.attributes.url}
+ />)
   }
-  </>
+  </section>
   )
 }
 
