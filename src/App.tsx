@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import Post from "./pages/Post";
 import NoPage from "./pages/NoPage";
+import Tags from "./pages/Tags";
 
 
 
@@ -13,6 +14,9 @@ function App() {
       <Route path="/post" element={<Post />}>
        <Route path=":id" element={<Post />}/>
        </Route>
+      <Route path="/tags" element={<Tags />}>
+        <Route path=":tag" element={<Tags />} />
+        </Route>
        <Route path="*" element={<NoPage />} />
     </Route>
   ))

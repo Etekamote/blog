@@ -18,9 +18,6 @@ const PostComponent = () => {
     const {data, isLoading, error} = useFetch("posts", id);
     const formattedDate = useFormatDate(data?.attributes.publishedAt)
     const arrayTags = useFormatTags(data?.attributes.tags)
-    // const arrayTags = useFormatTags("tag, tag, tag")
-
-    console.log(data?.attributes.tags)
     useEffect(()=>{
         if(!id){
             navigate("/")
