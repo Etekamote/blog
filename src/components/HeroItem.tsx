@@ -9,7 +9,7 @@ type HeroItemProps = {
 
 
 const HeroItem = ({id, img, title}:HeroItemProps) => {
-    console.log(img)
+
   return (
     <article style={{
         backgroundImage: `url(http://localhost:1337${img})`

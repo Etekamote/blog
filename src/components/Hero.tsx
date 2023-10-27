@@ -1,21 +1,22 @@
-import React from 'react'
-import hero from "../assets/hero.jpg"
-import hero2 from "../assets/hero2.jpg"
-import hero3 from "../assets/hero3.webp"
-import HeroItem from './HeroItem'
 import useFetch from '../hooks/useFetch'
+import HeroItem from './HeroItem'
 import Loading from './Loading'
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 const Hero = () => {
 const {data, isLoading, error} = useFetch("posts")
-const trimmedData = data.slice(0,3)
+const trimmedData = data?.slice(0,3)
+const navigate = useNavigate()
 
 if(isLoading){
     return  <Loading />
   }
+  if(error){
+    navigate("/error")
+}
     
   return (
     <section className='mt-10'>

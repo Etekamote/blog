@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import useFetch from '../hooks/useFetch'
-import FeedPost from '../components/FeedPost'
-import Loading from '../components/Loading'
+import { useNavigate } from 'react-router-dom'
+import useFetchItems from '../hooks/useFetch'
+import FeedPost from './FeedPost'
+import Loading from './Loading'
 
 
 
 
 const Feed = () => {
-const {data, isLoading, error} = useFetch("posts")
-const trimmedData = data.slice(3)
+const navigate = useNavigate()
+const {data, isLoading, error} = useFetchItems("posts")
+const trimmedData = data?.slice(3)
 
 if(isLoading){
   return  <Loading />
+}
+if(error){
+  navigate("/error")
 }
 
 

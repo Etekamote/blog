@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import useFormatDate from "../hooks/useFormatDate"
+import useFormatTags from "../hooks/useFormatTags"
 
 type PostProps = {
   id: number,
@@ -13,22 +15,15 @@ type PostProps = {
 
 const FeedPost = ({id, title, content, tags, date, img} : PostProps) => {
 
-const newDate = new Date(date)
-const year = newDate.getFullYear()
-const month = String(newDate.getMonth() + 1).padStart(2, '0')
-const day = String(newDate.getDate()).padStart(2, '0')
-const hours = String(newDate.getHours()).padStart(2, '0')
-const minutes = String(newDate.getMinutes()).padStart(2, '0')
-const formattedDate = `${year}-${month}-${day}`
-const formattedTime = `${hours}:${minutes}`
-const arrayTags = tags.split(", ")
+const formattedDate = useFormatDate(date)
+const arrayTags = useFormatTags(tags)
 
 
   
   return (
       <article className='bg-white p-2 lg:p-4'>
         <Link to={`post/${id}`}><h2 className='text-blue-500 text-xl font-bold py-1'>{title}</h2></Link>
-        <div className='text-gray-500 text-xs'>{formattedDate} {formattedTime}</div>
+        <div className='text-gray-500 text-xs'>{formattedDate}</div>
         {img && <img src={`http://localhost:1337${img}`} alt={title} className='w-full h-36 object-top object-cover mt-4 lg:h-64'></img>}
         <div className='text-gray-500 mt-4 mb-4'>{content.length > 500 ? `${content.slice(0,500)}...` : content}</div>
         {content.length>500 &&<Link to={`post/${id}`}><span className="text-blue-500 font-bold">Czytaj więcej...</span></Link> }
