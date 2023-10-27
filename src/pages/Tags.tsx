@@ -27,9 +27,9 @@ const TagsComponent = () => {
     }
   return (
     <section className='flex flex-col gap-4'>
+    <h2 className="text-blue-500">Tag: {tag}</h2>
   {
   data && filteredData.map((item:any) =>   
-     
      <FeedPost
   key={item.id}
   id={item.id}
@@ -41,6 +41,9 @@ const TagsComponent = () => {
  />
  
  )
+  }
+  {
+    data && filteredData.length<=0 && <h2 className="text-center">Nie znaleziono tagu :(</h2>
   }
   </section>
   )
